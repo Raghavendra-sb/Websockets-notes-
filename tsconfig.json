@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Environment + Module Settings
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+
+    // Required for WebSocket + HTTP imports
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Node.js typings
+    "types": ["node"],
+
+    // Output Settings
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Type Checking
+    "strict": true,
+    "skipLibCheck": true
+  },
+
+  "include": ["src/**/*"]
+}

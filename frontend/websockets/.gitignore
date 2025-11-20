@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Local env
+*.local
+.env
+.env.*.local
+
+# Editor settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Lint cache
+.eslintcache
+
+# Typescript build info
+*.tsbuildinfo
+
+# Vite cache
+/.vite
+vite.config.ts.timestamp*
+
+# Optional npm cache
+.npm/
+
+# Coverage reports
+coverage/

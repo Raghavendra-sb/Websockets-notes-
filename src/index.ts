@@ -1,30 +1,46 @@
-import WebSocket, { WebSocketServer } from 'ws';
-import http from 'http';
+import express from 'express'                     // Import Express framework
+import { WebSocketServer } from 'ws'              // Import WebSocket server class from 'ws'
 
-const server = http.createServer(function (request: any, response: any) {
-    console.log((new Date()) + ' Received request for ' + request.url);
-    response.end("hi there");
-});
+// ------------------- EXPRESS SERVER SETUP -------------------
 
-const wss = new WebSocketServer({ server });
- var usercount=0;
+const app = express()                             // Create an Express application
+
+// Start HTTP server on port 8080 (required for WebSockets to attach to)
+const httpServer = app.listen(8080)               // Express is listening on 8080
+
+// ------------------ WEBSOCKET SERVER SETUP ------------------
+
+// Create a WebSocketServer and attach it to the same HTTP server
+const wss = new WebSocketServer({ 
+    server: httpServer                            // Bind WS server to existing Express server
+})
+
+// When a new WebSocket client connects
 wss.on('connection', function connection(ws) {
-   
-    ws.on('error', console.error);
+    
+    // Log any WebSocket errors
+    ws.on('error', console.error)
 
+    // Listen for any incoming messages from this client
     ws.on('message', function message(data, isBinary) {
+        console.log('received: %s', data);
+
+        // Broadcast this message to ALL connected clients
         wss.clients.forEach(function each(client) {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(data, { binary: isBinary });
+
+            // Check if client connection is open
+            if (client.readyState === ws.OPEN) {
+                // Send the received message to each client
+                client.send(data, { binary: isBinary })
             }
-        });
-    });
-     console.log("User count :",++usercount);
+        })
+    })
 
-    ws.send('Hello! Message From Server!!');
-   
-});
+    // When a client connects, send a welcome message
+    ws.send('Hello! Message From Server!!')
+})
 
-server.listen(8080, function () {
-    console.log((new Date()) + ' Server is listening on port 8080');
-});
+
+httpServer.on('listening', () => {
+    console.log('Server is listening on http://localhost:8080')
+})

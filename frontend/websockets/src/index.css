@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
 :root {
-  --bg-color: #1a1a2e;
-  --sidebar-bg: #16213e;
-  --chat-bg: #0f3460;
-  --primary-color: #e94560;
-  --text-color: #e0e0e0;
-  --secondary-text: #a0a0a0;
-  --my-message-bg: #e94560;
-  --other-message-bg: #1f4068;
-  --input-bg: #1a1a2e;
-  --border-color: #2a2a40;
+  --bg-color: #121212;
+  --sidebar-bg: #000000;
+  --chat-bg: #121212;
+  --primary-color: #FFE135;
+  --text-color: #FFFFFF;
+  --secondary-text: #CCCCCC;
+  --my-message-bg: #FFE135;
+  --my-message-text: #000000;
+  --other-message-bg: #2A2A2A;
+  --input-bg: #1E1E1E;
+  --border-color: #333333;
+  --border-radius: 25px;
 }
 
 * {
@@ -18,7 +22,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   height: 100vh;
@@ -35,17 +39,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: radial-gradient(circle at top right, #1f4068 0%, #1a1a2e 100%);
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
 }
 
 .login-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  background: #000000;
   padding: 3rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary-color);
   text-align: center;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 0 20px rgba(255, 225, 53, 0.2);
   width: 100%;
   max-width: 400px;
 }
@@ -53,49 +57,53 @@ body {
 .login-card h1 {
   margin-bottom: 0.5rem;
   font-weight: 700;
-  background: linear-gradient(to right, #e94560, #ff6b6b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .login-card p {
   color: var(--secondary-text);
   margin-bottom: 2rem;
+  font-weight: 600;
 }
 
 .login-input {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
   background: var(--input-bg);
   color: var(--text-color);
   font-size: 1rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.3s;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .login-input:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(255, 225, 53, 0.3);
 }
 
 .login-button {
   width: 100%;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: var(--border-radius);
   border: none;
   background: var(--primary-color);
-  color: white;
-  font-weight: 600;
+  color: var(--my-message-text);
+  font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
 }
 
 .login-button:hover {
-  background-color: #d63d56;
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 225, 53, 0.4);
 }
 
 /* App Layout */
@@ -114,52 +122,58 @@ body {
 }
 
 .sidebar-header {
-  padding: 20px;
+  padding: 25px;
   border-bottom: 1px solid var(--border-color);
-  background-color: rgba(22, 33, 62, 0.95);
+  background-color: #000000;
 }
 
 .sidebar-header h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .users-list {
   flex: 1;
   overflow-y: auto;
-  padding: 10px;
+  padding: 15px;
 }
 
 .user-item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 5px;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  margin-bottom: 8px;
   transition: background-color 0.2s;
+  border: 1px solid transparent;
 }
 
 .user-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #1a1a1a;
+  border-color: #333;
 }
 
 .user-avatar {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
+  font-weight: 700;
   margin-right: 12px;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #000;
+  background-color: var(--primary-color) !important;
+  /* Force yellow avatars */
+  box-shadow: 0 0 10px rgba(255, 225, 53, 0.3);
 }
 
 .user-name {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .current-user {
@@ -176,31 +190,40 @@ body {
 }
 
 .chat-header {
-  padding: 20px;
+  padding: 20px 30px;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(26, 26, 46, 0.95);
+  background-color: #000000;
+}
+
+.chat-header h2 {
+  font-weight: 700;
+  color: var(--text-color);
 }
 
 .connection-status {
   display: flex;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--secondary-text);
+  background: #1E1E1E;
+  padding: 8px 15px;
+  border-radius: 20px;
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 .status-dot.online {
-  background-color: #2ecc71;
-  box-shadow: 0 0 8px #2ecc71;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
 }
 
 .status-dot.offline {
@@ -211,10 +234,10 @@ body {
 .message-list {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .system-message {
@@ -223,34 +246,37 @@ body {
   font-size: 0.85rem;
   margin: 10px 0;
   position: relative;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .system-message::before,
 .system-message::after {
   content: '';
   display: inline-block;
-  width: 30px;
-  height: 1px;
+  width: 40px;
+  height: 2px;
   background-color: var(--border-color);
   vertical-align: middle;
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
 .message-wrapper {
   display: flex;
-  max-width: 70%;
-  animation: fadeIn 0.3s ease;
+  max-width: 75%;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes fadeIn {
+@keyframes popIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: scale(0.9) translateY(10px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -264,30 +290,31 @@ body {
 }
 
 .message-avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 12px;
   flex-shrink: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .message-bubble {
-  padding: 12px 16px;
-  border-radius: 18px;
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
   position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
 }
 
 .my-message .message-bubble {
   background-color: var(--my-message-bg);
-  color: white;
+  color: var(--my-message-text);
   border-bottom-right-radius: 4px;
 }
 
@@ -295,13 +322,15 @@ body {
   background-color: var(--other-message-bg);
   color: var(--text-color);
   border-bottom-left-radius: 4px;
+  border: 1px solid var(--border-color);
 }
 
 .message-sender {
   font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: #a0a0a0;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--primary-color);
+  text-transform: uppercase;
 }
 
 .message-content {
@@ -311,53 +340,58 @@ body {
 
 .message-time {
   font-size: 0.7rem;
-  margin-top: 4px;
-  opacity: 0.7;
+  margin-top: 6px;
+  opacity: 0.6;
   text-align: right;
+  font-weight: 600;
 }
 
 /* Message Input */
 .message-input-container {
-  padding: 20px;
+  padding: 25px;
   border-top: 1px solid var(--border-color);
   display: flex;
-  gap: 10px;
-  background-color: var(--bg-color);
+  gap: 15px;
+  background-color: #000000;
 }
 
 .message-input {
   flex: 1;
-  padding: 12px 16px;
-  border-radius: 24px;
-  border: 1px solid var(--border-color);
+  padding: 15px 25px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
   background-color: var(--input-bg);
   color: var(--text-color);
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .message-input:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(255, 225, 53, 0.2);
 }
 
 .send-button {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   border: none;
   background-color: var(--primary-color);
-  color: white;
+  color: #000;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  font-weight: 700;
 }
 
 .send-button:hover:not(:disabled) {
-  background-color: #d63d56;
-  transform: scale(1.05);
+  background-color: #ffe660;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 225, 53, 0.5);
 }
 
 .send-button:disabled {
@@ -368,18 +402,19 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a40;
-  border-radius: 4px;
+  background: #333;
+  border-radius: 5px;
+  border: 2px solid #000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a50;
+  background: var(--primary-color);
 }

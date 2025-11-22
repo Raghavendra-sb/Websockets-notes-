@@ -19,10 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ users, currentUser }) => {
             <div className="users-list">
                 {users.map((user, index) => (
                     <div key={index} className="user-item">
-                        <div
-                            className="user-avatar"
-                            style={{ backgroundColor: user.color }}
-                        >
+                        <div className="user-avatar">
                             {user.username[0].toUpperCase()}
                         </div>
                         <span className={`user-name ${user.username === currentUser ? 'current-user' : ''}`}>

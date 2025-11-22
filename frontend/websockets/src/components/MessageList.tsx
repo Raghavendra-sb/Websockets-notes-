@@ -45,7 +45,6 @@ export const MessageList: React.FC<MessageListProps> = ({ messages, currentUser 
                         {!isMyMessage && (
                             <div
                                 className="message-avatar"
-                                style={{ backgroundColor: msg.color }}
                                 title={msg.sender}
                             >
                                 {msg.sender?.[0].toUpperCase()}

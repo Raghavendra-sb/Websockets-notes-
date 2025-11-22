@@ -26,7 +26,8 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080');
+    const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:8080';
+    const ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
       console.log('Connected to WebSocket');
